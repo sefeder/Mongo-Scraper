@@ -1,22 +1,24 @@
 <h1>Mongo Scraper</h1>
 
-<button id="scrapeBtn" >SCRAPE!</button>
+<button id="scrapeBtn">SCRAPE!</button>
 
 <br>
 
 {{#each results}}
-{{@index}})
+
+{{inc @index}})
 <br>
     <p>
         Title: {{title}}
     <br>
-        Link: <a href="{{URL}}">{{URL}}</a>
+        Link: <a target="_blank" href="{{URL}}">{{URL}}</a>
     <br> 
         Summary: {{summary}}
     <br>
         Image: <img src="{{image}}">
     <hr>
     </p>
+
 
 {{/each}}
 

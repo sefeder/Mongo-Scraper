@@ -65,7 +65,7 @@ app.get('/all', function(req, res){
         })
         console.log(results)
         res.render('index', {
-            results: results
+            results: results,
         });
     });
 })
