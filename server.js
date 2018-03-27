@@ -51,11 +51,11 @@ app.get('/all', function(req, res){
     request('https://www.theonion.com/', function(error, response, html){
         var $ = cheerio.load(html);
         var results = [];
-        $('a.js_entry-link').each(function(i, element){
-            var URL = $(element).attr("href");
-            var title = $(element).text()
-            var summary = $(element).parent('header').siblings('div.item_content').children('div').children('p')//.text()
-            var image = $(element).parent('header').siblings('div.item_content').children('figure').children('a').children('div').children('picture').children('img').attr('src')
+        $('header').each(function(i, element){
+            var URL = $(element).find($('h1')).children().attr("href");
+            var title = $(element).find($('h1')).children().text()
+            var summary = $(element).next().find($('.entry-summary')).children('p').text();
+            var image = $(element).next().find($('picture')).children('img').attr('src')
             results.push({
                 title: title,
                 URL: URL,

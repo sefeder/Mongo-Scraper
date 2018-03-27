@@ -5,11 +5,18 @@
 <br>
 
 {{#each results}}
+{{@index}})
 <br>
-    {{title}}
+    <p>
+        Title: {{title}}
     <br>
-    <a href="{{URL}}">{{URL}}</a>
-    <hr><br>
+        Link: <a href="{{URL}}">{{URL}}</a>
+    <br> 
+        Summary: {{summary}}
+    <br>
+        Image: <img src="{{image}}">
+    <hr>
+    </p>
 
 {{/each}}
 
