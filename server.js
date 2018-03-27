@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
+var Article = require('./models/model.js');
 var cheerio = require('cheerio');
 var request = require('request');
 var exphbs = require("express-handlebars");
@@ -35,19 +35,38 @@ app.use(bodyParser.json());
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
-
 // Sets up the Port
 var PORT = 4020;
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+//get routes
+app.get('/', function(req, res){
+    res.render('index');
+})
+
+app.get('/all', function(req, res){
+    //scrape request
+    request('https://www.theonion.com/', function(error, response, html){
+        var $ = cheerio.load(html);
+        var results = [];
+        $('a.js_entry-link').each(function(i, element){
+            var URL = $(element).attr("href");
+            var title = $(element).text()
+            var summary = $(element).parent('header').siblings('div.item_content').children('div').children('p')//.text()
+            var image = $(element).parent('header').siblings('div.item_content').children('figure').children('a').children('div').children('picture').children('img').attr('src')
+            results.push({
+                title: title,
+                URL: URL,
+                summary: summary,
+                image: image
+            })
+        })
+        console.log(results)
+        res.render('index', {
+            results: results
+        });
+    });
+})
 

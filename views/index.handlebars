@@ -1,1 +1,15 @@
-<h1>Mongo Scrapper</h1>
+<h1>Mongo Scraper</h1>
+
+<button id="scrapeBtn" >SCRAPE!</button>
+
+<br>
+
+{{#each results}}
+<br>
+    {{title}}
+    <br>
+    <a href="{{URL}}">{{URL}}</a>
+    <hr><br>
+
+{{/each}}
+
