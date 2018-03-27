@@ -1,24 +1,29 @@
-<h1>Mongo Scraper</h1>
+<h1>Mongo Onion Headline Scraper</h1>
 
-<button id="scrapeBtn">SCRAPE!</button>
+<a href="http://localhost:4020/all"><button id="scrapeBtn">SCRAPE!</button></a>
 
-<br>
+<br><br>
 
 {{#each results}}
-
+{{#if title}}
 {{inc @index}})
 <br>
     <p>
-        Title: {{title}}
-    <br>
-        Link: <a target="_blank" href="{{URL}}">{{URL}}</a>
-    <br> 
-        Summary: {{summary}}
-    <br>
-        Image: <img src="{{image}}">
+        <strong>Title:</strong> {{title}}
+        </p>
+    <p>
+        <strong>Link:</strong> <a target="_blank" href="{{URL}}">{{URL}}</a>
+        </p>
+    <p> 
+        <strong>Summary:</strong> {{summary}}
+        </p>
+    <p>   
+        <strong>Image:</strong> 
+        </p>
+    <p>
+        <img src="{{image}}">
+        </p>
     <hr>
-    </p>
-
-
+{{/if}}
 {{/each}}
 
