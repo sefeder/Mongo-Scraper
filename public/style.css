@@ -1,0 +1,27 @@
+@font-face {
+    font-family: onionFont;
+    src: url("images/OPTIEagle-Bold.otf");
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 200%;
+    align-items: center;
+}
+#title {
+    font-family: onionFont;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 60px;
+}
+
+#onion {
+    width: 60px;
+    height: 65px;
+}
+
+#scraper {
+    width: 60px;
+    height: 65px;
+}
