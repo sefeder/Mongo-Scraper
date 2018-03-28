@@ -55,7 +55,7 @@ app.get('/all', function(req, res){
             var URL = $(element).find($('h1')).children().attr("href");
             var title = $(element).find($('h1')).children().text()
             var summary = $(element).next().find($('.entry-summary')).children('p').text();
-            var image = $(element).next().find($('picture')).children('img').attr('src')
+            var image = $(element).next().find($('picture')).children('source').attr('data-srcset')
             results.push({
                 title: title,
                 URL: URL,
