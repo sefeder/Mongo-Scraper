@@ -2,12 +2,19 @@
     font-family: onionFont;
     src: url("images/OPTIEagle-Bold.otf");
 }
+
+body {
+    background: url(images/background.png) no-repeat center center fixed;
+    background-size: cover;
+  
+}
 .header{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 200%;
     align-items: center;
+    margin-top: 45px;
+    margin-bottom: 45px;
 }
 #title {
     font-family: onionFont;
@@ -24,4 +31,46 @@
 #scraper {
     width: 60px;
     height: 65px;
+}
+
+.cardDisplay{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    margin: 15px;
+    border-color: rgb(47,104,63);
+    border-width: 1.5px
+}
+.card-title{
+    color: rgb(47,104,63);
+}
+.btn {
+    background-color: rgb(47,104,63);
+}
+
+.scrapeBtn{
+    display: flex;
+    justify-content: center;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.modal-body{
+    text-align: center;
+}
+
+.notesBtn {
+    background-color: rgb(2, 55, 129)
+}
+
+.removeBtn {
+    background-color: rgb(117, 2, 2)
+}
+.saved button{
+    display: none;
+}
+.noteDisplay{
+    text-align: left
 }
