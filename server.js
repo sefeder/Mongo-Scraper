@@ -90,7 +90,7 @@ app.post('/scrape', function (req, res) {
         })
     })
 });
-
+// })
 
 app.get('/articles', function(req, res){
     db.Article.find({}, function(err, response){
@@ -133,17 +133,18 @@ app.post('/saved', function(req, res){
 
 app.post('/saveNote', function(req, res){
     // console.log(req.body.URL)
-    db.Article.update({"URL" : req.body.URL}, {$push:{"notes" : req.body.note}}, function(err, response){
+    db.Article.update({"URL" : req.body.URL}, {$push:{notes : req.body.note}}, function(err, response){
         if (err) throw err
     })
     res.redirect('/saved')
     
 })
 
-// app.get('/savedNotes/:id', function(req, res){
-//     db.Article.find({"_id" : req.params.id}, function(err, response){
-//         if (err) throw err
-//         res.render
-//     })
+app.post('/removeNote', function(req, res){
+    // console.log(req.body.URL)
+    db.Article.update({"_id" : req.body.article}, {$pull: { notes: { $in: [req.body.note] }}}, function(err, response){
+        if (err) throw err
+    })
+    res.redirect('/saved')
     
-// })
+})

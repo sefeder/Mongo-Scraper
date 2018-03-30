@@ -23,8 +23,10 @@
                 <h5 class="card-title">{{title}}</h5>
             </a>
             <p class="card-text">{{summary}}</p>
+            <div class="btnDiv">
             <button data-toggle="modal" data-URL="{{this.URL}}"data-target="#{{@index}}noteModal" id="notesBtn" data-id="{{_id}}" class="btn notesBtn btn-dark">Notes</button>
             <button id="removeBtn" data-id="{{_id}}" class="btn removeBtn btn-dark">Remove</button>
+            </div>
         </div>
     </div>
 
@@ -38,7 +40,12 @@
                  <div class="noteDisplay">
                  <ul>
                 {{#each notes}}
-                    <li>{{this}}</li>
+                <div id="note">
+                        <li data-id="{{../_id}}">
+                            <p id="notes">{{this}}</p>
+                        </li>
+                        <button class="btn xBtn btn-sm btn-danger">X</button>
+                </div>
                 {{/each}}
                  </ul>
                 </div>
@@ -48,7 +55,7 @@
                         <textarea class="form-control" placeholder="Type any notes about this article here" type="text" name="note" id="note"></textarea>
                     </div>
                     <div class="form-group">
-                        <button id="addNote" data-URL="{{URL}}" class="btn btn-dark" type="submit">Add Note</button>
+                        <button id="addNote" data-URL="{{URL}}" class="btn addNote btn-dark" type="submit">Add Note</button>
                     </div>
                 </form>
             </div>

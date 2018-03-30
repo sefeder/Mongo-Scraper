@@ -3,7 +3,7 @@
 
 
 
-$(document).on('click', '#saveBtn', function () {
+$(document).on('click', '#saveBtn', function (event) {
     event.preventDefault()
     $(this).attr("disabled", true).html('<em>Saved!</em>')
     $.ajax({
@@ -17,13 +17,13 @@ $(document).on('click', '#saveBtn', function () {
     })
 })
 
-$(document).on('click', '#removeBtn', function () {
+$(document).on('click', '#removeBtn', function (event) {
     event.preventDefault()
     $.ajax({
         type: "POST",
         url: "/saved",
         data: {
-            URL: $(this).siblings('a').attr('href').trim()
+            URL: $(this).parent().siblings('a').attr('href').trim()
         },
         success: function() {
             location.reload();
@@ -31,7 +31,7 @@ $(document).on('click', '#removeBtn', function () {
     })
 })
 
-$(document).on('click', '#addNote', function () {
+$(document).on('click', '#addNote', function (event) {
     event.preventDefault()
     $.ajax({
         type: "POST",
@@ -46,17 +46,18 @@ $(document).on('click', '#addNote', function () {
     })
 })
 
-// $(document).on('click', '#notesBtn', function () {
-//     event.preventDefault()
-//     var thisId = $(this).attr('data-id')
-//     $.ajax({
-//         type: "GET",
-//         url: "/savedNotes/"+thisId,
-//         success: function(response) {
-//             for (var i = 0; i < response.length; i++){
-//                 $('.noteDisplay').append('<div>'+response[i]+'</div>')
-//             }
-//             // location.reload();
-//         }
-//     })
-// })
+$(document).on('click', '.xBtn', function (event) {
+    event.preventDefault()
+    $.ajax({
+        type: "POST",
+        url: "/removeNote",
+        data: {
+            article: $(this).siblings().attr('data-id'),
+            note: $(this).siblings().children().text()
+        },
+        success: function() {
+            location.reload();
+        }
+    })
+})
+
