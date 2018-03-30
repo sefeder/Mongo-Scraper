@@ -87,13 +87,10 @@ app.post('/scrape', function (req, res) {
                 .catch(function (err) {
                 res.redirect('/articles')
                 })
-        
         })
-       
-      
     })
 });
-// })
+
 
 app.get('/articles', function(req, res){
     db.Article.find({}, function(err, response){
@@ -136,7 +133,7 @@ app.post('/saved', function(req, res){
 
 app.post('/saveNote', function(req, res){
     // console.log(req.body.URL)
-    db.Article.update({"URL" : req.body.URL}, {$push:{"note" : req.body.note}}, function(err, response){
+    db.Article.update({"URL" : req.body.URL}, {$push:{"notes" : req.body.note}}, function(err, response){
         if (err) throw err
     })
     res.redirect('/saved')
