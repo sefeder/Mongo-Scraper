@@ -13,7 +13,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 80px;
     margin-bottom: 30px;
 }
 #title {
@@ -88,9 +88,6 @@ body {
     align-items: center;
     
 }
-.xBtn{
-}
-
 #notes{
     margin-bottom: 0;
     margin-right: 1ch;
@@ -102,4 +99,13 @@ body {
 .white {
     color: white;
     font-size: 25px;
+}
+.white:hover{
+    color: white;
+    text-decoration: none;
+}
+#navOnion{
+    
+    width: 45px;
+    height: 45px;
 }

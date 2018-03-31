@@ -16,6 +16,19 @@
 
 <body>
 
+    <nav class="navbar fixed-top navbar-light bg-faded">
+  <a class="white" href="http://localhost:4020/"><img id="navOnion" src="images/onionFavicon.png"></a>
+  {{#if back}}
+  <a href="http://localhost:4020/articles">
+    <button class="btn btn-dark">Back to All Articles</button>
+</a>
+  {{else}}
+  <a href="http://localhost:4020/saved">
+    <button class="btn btn-dark">See Your Saved Articles</button>
+</a>
+{{/if}}
+</nav>
+
     {{{body}}}
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

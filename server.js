@@ -117,6 +117,7 @@ app.get('/saved', function(req, res){
         // console.log(response)
         res.render('saved', {
             results: response,
+            back: true
         })
     })
     
