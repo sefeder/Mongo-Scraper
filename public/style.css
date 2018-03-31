@@ -13,7 +13,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 70px;
     margin-bottom: 30px;
 }
 #title {
@@ -94,4 +94,12 @@ body {
 #notes{
     margin-bottom: 0;
     margin-right: 1ch;
+}
+
+.navbar {
+    background-color: rgb(47,104,63); 
+}
+.white {
+    color: white;
+    font-size: 25px;
 }
