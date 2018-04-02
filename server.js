@@ -95,11 +95,12 @@ app.get('/articles', function(req, res){
     db.Article.find({}, function(err, response){
         if (err) throw err
         // console.log(response)
-        res.render('index', {
+        setTimeout(function() {
+            res.render('index', {
             results: response
         })
-    })
-
+    }, 2000)})
+    
 })
 app.post('/saving', function(req, res){
     console.log(req.body.URL, 'line 109')
