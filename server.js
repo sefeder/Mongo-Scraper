@@ -38,9 +38,9 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Sets up the Port
-var PORT = 4020;
-app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+var port = process.env.PORT || 4020;
+app.listen(port, function () {
+    console.log("App listening on PORT " + port);
 });
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
