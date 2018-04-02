@@ -1,7 +1,3 @@
-// $('#scrapeBtn').on('click', function (event) {
-//     event.preventDefault()
-
-
 
 $(document).on('click', '#saveBtn', function (event) {
     event.preventDefault()

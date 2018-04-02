@@ -1,4 +1,3 @@
-// import { setInterval } from 'timers';
 
 var express = require('express');
 var app = express();

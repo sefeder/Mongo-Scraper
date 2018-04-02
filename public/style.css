@@ -6,6 +6,9 @@
 body {
     background: url(images/background.png) no-repeat center center fixed;
     background-size: cover;
+    min-height:100vh;
+    position: relative;
+    margin: 0;
   
 }
 .header{
@@ -108,4 +111,16 @@ body {
     
     width: 45px;
     height: 45px;
+}
+
+.navbar-dark{
+    display: flex;
+    font-size: 12px;
+    color: white;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: rgb(47,104,63); 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
