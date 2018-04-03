@@ -53,7 +53,10 @@ mongoose.connect(MONGODB_URI)
 
 // get routes
 app.get('/', function (req, res) {
-    res.render('index');
+    res.render('home');
+})
+app.post('/', function (req, res) {
+    res.redirect('/');
 })
 
 app.post('/scrape', function (req, res) {
@@ -111,7 +114,7 @@ app.post('/saving', function(req, res){
     
 })
 
-app.get('/saved', function(req, res){
+app.post('/displaySaved', function(req, res){
     db.Article.find({saved : true}, function(err, response){
         if (err) throw err
         // console.log(response)
@@ -148,4 +151,8 @@ app.post('/removeNote', function(req, res){
     })
     res.redirect('/saved')
     
+})
+
+app.post('/back', function(req, res){
+    res.redirect('/articles')
 })

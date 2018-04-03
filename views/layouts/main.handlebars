@@ -17,15 +17,17 @@
 <body>
 
     <nav class="navbar fixed-top navbar-light bg-faded">
-  <a class="white" href="http://localhost:4020/"><img id="navOnion" src="images/onionFavicon.png"></a>
+  <form action="/" method="POST">
+  <button class="btn btn-light" type="submit"><img id="navOnion" src="images/onionFavicon.png"></button>
+  </form>
   {{#if back}}
-  <a href="http://localhost:4020/articles">
-    <button class="btn btn-dark">Back to All Articles</button>
-</a>
+  <form action="/back" method="POST">
+    <button type="submit" class="btn btn-dark">Back to All Articles</button>
+</form>
   {{else}}
-  <a href="http://localhost:4020/saved">
-    <button class="btn btn-dark">See Your Saved Articles</button>
-</a>
+  <form action="/displaySaved" method="POST">
+    <button type="submit" class="btn btn-dark">See Your Saved Articles</button>
+    </form>
 {{/if}}
 </nav>
 
