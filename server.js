@@ -114,7 +114,7 @@ app.post('/saving', function(req, res){
     
 })
 
-app.post('/displaySaved', function(req, res){
+app.post('/saved-articles', function(req, res){
     db.Article.find({saved : true}, function(err, response){
         if (err) throw err
         // console.log(response)
