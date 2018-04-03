@@ -17,7 +17,7 @@ $(document).on('click', '#removeBtn', function (event) {
     event.preventDefault()
     $.ajax({
         type: "POST",
-        url: "/saved",
+        url: "/removing",
         data: {
             URL: $(this).parent().siblings('a').attr('href').trim()
         },

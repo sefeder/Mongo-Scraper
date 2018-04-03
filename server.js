@@ -98,15 +98,15 @@ app.get('/articles', function(req, res){
     db.Article.find({}, function(err, response){
         if (err) throw err
         // console.log(response)
-        setTimeout(function() {
+       
             res.render('index', {
             results: response
         })
-    }, 2000)})
+    })
     
 })
 app.post('/saving', function(req, res){
-    console.log(req.body.URL, 'line 109')
+    // console.log(req.body.URL, 'line 109')
     db.Article.update({"URL" : req.body.URL}, {$set:{"saved" : true}}, function(err, response){
     if (err) throw err
     res.redirect('/articles')
@@ -126,7 +126,21 @@ app.post('/displaySaved', function(req, res){
     
 })
 
-app.post('/saved', function(req, res){
+app.get('/saved', function(req, res){
+    db.Article.find({saved : true}, function(err, response){
+        if (err) throw err
+        // console.log(response)
+        res.render('saved', {
+            results: response,
+            back: true
+        })
+    })
+    
+})
+
+
+
+app.post('/removing', function(req, res){
     // console.log(req.body.URL)
     db.Article.update({"URL" : req.body.URL}, {$set:{"saved" : false}}, function(err, response){
         if (err) throw err

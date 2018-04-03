@@ -124,3 +124,14 @@ body {
     bottom: 0;
     width: 100%;
 }
+
+.jumbotron{
+    background-color:  rgb(47,104,63); 
+    text-align: center;
+    color: white;
+    width: 66%;
+}
+.jumboDiv{
+    display: flex;
+    justify-content: center;
+}

@@ -1,13 +1,16 @@
 
+
+{{#if results}}
+<br>
 <header class="header">
     <img id="onion" src="images/onion.png">
     <h1 id="title">
         <strong>the</strong> ONION...SCRAPER</h1>
     <img id="scraper" src="images/scraper.png">
 </header>
-
 <div class="cardDisplay">
-    {{#each results}} {{#if summary}}
+{{#each results}} 
+    {{#if summary}}
 
 
     <div class="card" style="width: 18rem;">
@@ -61,6 +64,27 @@
         </div>
     </div>
 
-    {{/if}} {{/each}}
+    {{/if}} 
+{{/each}}
 
 </div>
+
+{{else}}
+<br><br>
+<header class="header">
+    <img id="onion" src="images/onion.png">
+    <h1 id="title">
+        <strong>the</strong> ONION...SCRAPER</h1>
+    <img id="scraper" src="images/scraper.png">
+</header>
+<br><br>
+<div class="noSaved">
+    <div class="jumboDiv">
+        <div class="jumbotron">
+             <h2 class="display-4">Uh Oh! You don't have any saved articles.</h2>
+        </div>
+    </div>
+
+</div>
+
+{{/if}}
