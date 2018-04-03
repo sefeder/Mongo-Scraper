@@ -97,7 +97,10 @@ body {
 }
 
 .navbar {
-    background-color: rgb(47,104,63); 
+    background-color: rgb(47,104,63);
+    -webkit-box-shadow: 0px 4px 24px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 24px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 24px 0px rgba(0,0,0,0.75);
 }
 .white {
     color: white;
