@@ -95,7 +95,7 @@ app.post('/scrape', function (req, res) {
 // })
 
 app.get('/articles', function(req, res){
-    db.Article.find({}).sort({ userCreated: 1 }, function(err, response){
+    db.Article.find({}).sort({ userCreated: 1}).exec(function(err, response){
         if (err) throw err
         // console.log(response)
        
@@ -127,7 +127,7 @@ app.post('/saved-articles', function(req, res){
 })
 
 app.get('/saved', function(req, res){
-    db.Article.find({ saved: true }).sort({ userCreated: 1 }, function(err, response){
+    db.Article.find({ saved: true }).sort({ userCreated: 1 }).exec(function(err, response){
         if (err) throw err
         // console.log(response)
         res.render('saved', {
