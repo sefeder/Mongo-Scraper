@@ -35,6 +35,7 @@
                     <h4>Notes on: "{{title}}"</h4>
                     <br>
                     <div class="noteDisplay">
+                        {{#if notes}}
                         <ul>
                             {{#each notes}}
                             <div id="note">
@@ -45,6 +46,9 @@
                             </div>
                             {{/each}}
                         </ul>
+                        {{else}}
+                        <p>(You don't have any notes on this article yet)</p>
+                        {{/if}}
                     </div>
                     <br>
                     <form>

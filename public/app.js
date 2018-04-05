@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    $('#backToScrape').popover({content: "Click this to go back to the scrape page!", trigger: "hover" });
+});
+
+$(window).on('load', function () {
+    $('#newArticleModal').modal('show');
+});
 
 $(document).on('click', '#saveBtn', function (event) {
     event.preventDefault()

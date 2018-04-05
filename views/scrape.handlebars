@@ -7,13 +7,15 @@
 </header>
 
 
-{{!-- <form method="POST" action="/scrape">
-<div class="scrapeBtn">
-    <button type="submit" class="btn btn-dark btn-block btn-lg" id="scrapeBtn" data-toggle="modal" data-target="#scrapeModal">SCRAPE!</button>
-</div>
+{{!--
+<form method="POST" action="/scrape">
+    <div class="scrapeBtn">
+        <button type="submit" class="btn btn-dark btn-block btn-lg" id="scrapeBtn" data-toggle="modal" data-target="#scrapeModal">SCRAPE!</button>
+    </div>
 </form>
 
-<br><br> --}}
+<br>
+<br> --}}
 
 <div class="cardDisplay">
     {{#each results}} {{#if summary}}
@@ -27,10 +29,12 @@
             </a>
             <p class="card-text">{{summary}}</p>
             {{#if saved}}
-            <button id="saveBtn" disabled="true" data-id="{{@index}}" class="btn btn-dark"><em>Saved!</em></button>
+            <button id="saveBtn" disabled="true" data-id="{{@index}}" class="btn btn-dark">
+                <em>Saved!</em>
+            </button>
             {{else}}
             <button id="saveBtn" data-id="{{@index}}" class="btn btn-dark">Save Article</button>
-        {{/if}}
+            {{/if}}
         </div>
     </div>
 
@@ -49,7 +53,8 @@
 </div>
 
 
-{{!-- <div class="modal fade" id="scrapeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{!--
+<div class="modal fade" id="scrapeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -59,3 +64,24 @@
         </div>
     </div>
 </div> --}}
+
+<div class="modal fade" id="newArticleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                {{#if newArticles}}
+                <h1>{{newArticles}} new articles were added!</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Great! Let's See Them</button>
+            </div>
+            {{else}}
+            <h1>No new articles added. Check back a little later!</h1>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Show Me the Old Ones</button>
+        </div>
+        {{/if}}
+    </div>
+</div>
+</div>

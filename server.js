@@ -51,8 +51,17 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:/mongoHeadline
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
 
+//////see 2 testing zones below//////////////////
+var newTotal = 0;
+var currentTotal = 0;
+/////////////////////////////////////////////////
+
 // get routes
 app.get('/', function (req, res) {
+    db.Article.find({ summary: { $ne: "" } }, function (err, response) {
+       currentTotal = response.length
+    //    console.log(currentTotal)
+        })
     res.render('home');
 })
 app.post('/', function (req, res) {
@@ -79,38 +88,45 @@ app.post('/scrape', function (req, res) {
             result.buttonId = i
 
             results.push(result)
+
             db.Article.create(result)
-                .then(function (dbArticle) {
-                    // console.log(result)
-                   
-                res.redirect('/articles') 
-                    
-                })
-                .catch(function (err) {
-                res.redirect('/articles')
-                })
+            .then(function (dbArticle) {
+                // console.log(result)
+                res.redirect('/scrape')   
+            })
+            .catch(function (err) {
+                res.redirect('/scrape')
+            })
         })
     })
 });
-// })
 
-app.get('/articles', function(req, res){
-    db.Article.find({}).sort({ userCreated: -1}).exec(function(err, response){
+app.get('/scrape', function (req, res) {
+    db.Article.find({ summary: { $ne: "" } }).sort({ userCreated: -1 }).exec(function (err, response) {
         if (err) throw err
-        // console.log(response)
-            res.render('index', {
-            results: response
+        newTotal = response.length
+        var newArticles = newTotal - currentTotal
+        // console.log('the new total is: ' + newArticles)
+        res.render('scrape', {
+            results: response,
+            newArticles: newArticles
         })
     })
-    
+})
+app.get('/articles', function(req, res){
+    db.Article.find({ summary: { $ne: "" } }).sort({ userCreated: -1}).exec(function(err, response){
+        if (err) throw err
+            res.render('index', {
+            results: response,
+        })
+    })
 })
 app.post('/saving', function(req, res){
     // console.log(req.body.URL, 'line 109')
     db.Article.update({"URL" : req.body.URL}, {$set:{"saved" : true}}, function(err, response){
     if (err) throw err
     res.redirect('/articles')
-    })
-    
+    }) 
 })
 
 app.post('/saved-articles', function(req, res){
@@ -127,10 +143,7 @@ app.get('/saved', function(req, res){
             back: true
         })
     })
-    
 })
-
-
 
 app.post('/removing', function(req, res){
     // console.log(req.body.URL)
@@ -138,7 +151,6 @@ app.post('/removing', function(req, res){
         if (err) throw err
     })
     res.redirect('/saved')
-    
 })
 
 app.post('/saveNote', function(req, res){
@@ -146,8 +158,7 @@ app.post('/saveNote', function(req, res){
     db.Article.update({"URL" : req.body.URL}, {$push:{notes : req.body.note}}, function(err, response){
         if (err) throw err
     })
-    res.redirect('/saved')
-    
+    res.redirect('/saved') 
 })
 
 app.post('/removeNote', function(req, res){
@@ -156,9 +167,9 @@ app.post('/removeNote', function(req, res){
         if (err) throw err
     })
     res.redirect('/saved')
-    
 })
 
 app.post('/back', function(req, res){
+    console.log(currentTotal+' fiya fo fiya man')
     res.redirect('/articles')
 })
