@@ -106,8 +106,8 @@ app.get('/scrape', function (req, res) {
         if (err) throw err
         newTotal = response.length
         var newArticles = newTotal - currentTotal
-        // console.log('the new total is: ' + newArticles)
-        if (newArticles = 1) {
+        console.log('the new total is: ' + newArticles)
+        if (newArticles === 1) {
             res.render('scrape', {
                 results: response,
                 newArticles: newArticles,
