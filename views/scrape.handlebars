@@ -69,7 +69,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                {{#if newArticles}}
+        {{#if oneArticle}}
+        <h1>{{newArticles}} new article was added!</h1>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Great! Let's See It</button>
+        </div>
+        {{else}}
+            {{#if newArticles}}
                 <h1>{{newArticles}} new articles were added!</h1>
             </div>
             <div class="modal-footer">
@@ -81,7 +88,8 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Show Me the Old Ones</button>
         </div>
-        {{/if}}
+            {{/if}}
+            {{/if}}
     </div>
 </div>
 </div>

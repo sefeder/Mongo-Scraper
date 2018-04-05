@@ -107,10 +107,18 @@ app.get('/scrape', function (req, res) {
         newTotal = response.length
         var newArticles = newTotal - currentTotal
         // console.log('the new total is: ' + newArticles)
-        res.render('scrape', {
-            results: response,
-            newArticles: newArticles
-        })
+        if (newArticles = 1) {
+            res.render('scrape', {
+                results: response,
+                newArticles: newArticles,
+                oneArticle: true
+            })
+        } else {
+            res.render('scrape', {
+                results: response,
+                newArticles: newArticles
+            })
+        }
     })
 })
 app.get('/articles', function(req, res){
